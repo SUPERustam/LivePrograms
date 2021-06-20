@@ -6,8 +6,8 @@ if [ ${#gstatus} -ne 0 ]
 then
 
     git add --all
-    git commit -m "Automated sync by $gstatus script"
-	git pull origin master --rebase
+    git commit -m "Automated sync by sync shell script"
+	  git pull origin master --rebase
     git push origin master
 
 fi
