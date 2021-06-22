@@ -14,8 +14,14 @@ def main():
         dct = convertor(text, dct)
     dct = dict(sorted(dct.items(), key=lambda x: (x[0], x[1])))
 
-    with open('plaintext2LaTeX_tasks.json', 'w', encoding='utf-8') as f:
-        
+    result = ''
+    for point, tasks in dct.items():
+        for task in tasks:
+            result += f"\zA{{({point} баллов) {task}}} {{}}\n"
+    # print(result)
+
+    with open('result.txt', 'w', encoding='utf8') as f:
+        f.write(result)
 
 
 def convertor(text: str, dct: dict) -> dict:
@@ -24,7 +30,7 @@ def convertor(text: str, dct: dict) -> dict:
     points = list(filter(lambda x: lst.index(x) % 2 == 0, lst))
 
     for i, point in enumerate(points):
-        # point = int(point)
+        point = int(point)
         if point in dct:
             dct[point].append(tasks[i])
         else:
